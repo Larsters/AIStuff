@@ -8,7 +8,7 @@ from langchain_openai import ChatOpenAI
 from langchain_core.output_parsers import StrOutputParser
 from langchain.schema import AgentAction, AgentFinish
 from langchain.agents.format_scratchpad import format_log_to_str
-from callbacks import AgentCallbackHandler  # Ensure this is correctly implemented
+from callbacks import AgentCallbackHandler 
 
 load_dotenv()
 
@@ -22,7 +22,7 @@ def get_text_length(text: str) -> int:
 def write_poem_in_kanye_style(topic: str) -> str:
     """Writes a small poem in Kanye West style about a given topic."""
     print(f"Writing poem about: {topic}")
-    # Replace the next line with actual API call to generate a poem
+    
     poem = "This is a placeholder poem about " + topic
     return poem
 
@@ -37,14 +37,14 @@ if __name__ == "__main__":
     user_topic = input("Please enter a topic for the poem: ")
     tools = [get_text_length, write_poem_in_kanye_style]
 
-    template = """..."""  # Use the template from your previous code
+    template = """..."""  
 
     prompt = PromptTemplate.from_template(template=template).partial(
         tools=render_text_description(tools), tool_names=", ".join([t.name for t in tools])
     )
 
     llm = ChatOpenAI(
-        temperature=0, stop=["\nObservation"], callbacks=[AgentCallbackHandler()]  # Ensure callbacks are properly set up
+        temperature=0, stop=["\nObservation"], callbacks=[AgentCallbackHandler()]  
     )
     intermediate_steps = []
     agent = (
@@ -54,7 +54,7 @@ if __name__ == "__main__":
         }
         | prompt
         | llm
-        | {"str": StrOutputParser()}  # Adjust as needed for your parsing
+        | {"str": StrOutputParser()}  # Parsing might be implemented differently
     )
 
     task_description = f"Write a small poem in Kanye West style about {user_topic} and then count the length by characters."
