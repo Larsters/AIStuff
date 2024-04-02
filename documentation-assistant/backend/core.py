@@ -25,6 +25,7 @@ def run_llm(query: str) -> Any:
     )
     return qa.invoke({"query": query})
 
+
 if __name__ == "__main__":
     query = "What is the Langchain?"
     print(run_llm(query))
