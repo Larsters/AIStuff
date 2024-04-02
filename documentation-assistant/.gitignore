@@ -1,0 +1,3 @@
+langchain-docs/
+.env 
+Pipfile.lock
