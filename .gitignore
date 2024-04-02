@@ -1,8 +1,6 @@
-# Ignore .env files in specific directories
 look_that_up/.env
 react-langchain/.env
 
-# General good practices
 look_that_up/.pyc
 react-langchain/.pyc
 __pycache__/
